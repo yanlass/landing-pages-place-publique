@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Place Publique — Une France puissante grâce à une Europe souveraine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pp-yellow: #FFED00;
+      --pp-blue: #67CEF5;
+      --pp-black: #0A0A0A;
+      --pp-white: #FFFFFF;
+      --pp-grey: #F2F2F2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Barlow', sans-serif; background: var(--pp-white); color: var(--pp-black); }
+
+    nav { background: var(--pp-black); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-dot { width: 24px; height: 24px; background: var(--pp-yellow); border-radius: 50%; }
+    .logo-text { color: var(--pp-white); font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+    .nav-cta { background: var(--pp-yellow); color: var(--pp-black); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 9px 22px; text-decoration: none; transition: opacity 0.2s; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .hero { background: var(--pp-black); color: var(--pp-white); padding: 88px 48px 80px; position: relative; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; bottom: -160px; right: -160px; width: 600px; height: 600px; border: 1.5px solid rgba(103,206,245,0.12); border-radius: 50%; }
+    .hero::before { content: ''; position: absolute; bottom: -80px; right: -80px; width: 360px; height: 360px; border: 1.5px solid rgba(103,206,245,0.08); border-radius: 50%; }
+    .hero-inner { max-width: 860px; position: relative; z-index: 1; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--pp-blue); margin-bottom: 28px; }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 2px; background: var(--pp-blue); }
+    .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 800; line-height: 0.95; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 20px; }
+    .hero h1 .y { color: var(--pp-yellow); }
+    .hero h1 .b { color: var(--pp-blue); }
+    .hero-desc { font-size: 1.1rem; color: #A0A8B8; max-width: 560px; line-height: 1.7; margin-bottom: 44px; }
+    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .btn-primary { background: var(--pp-yellow); color: var(--pp-black); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 15px 32px; text-decoration: none; transition: opacity 0.2s, transform 0.15s; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-ghost { color: rgba(255,255,255,0.6); font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; padding: 15px 0; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); transition: color 0.2s; }
+    .btn-ghost:hover { color: var(--pp-white); border-color: rgba(255,255,255,0.6); }
+
+    .band { background: var(--pp-blue); padding: 24px 48px; }
+    .band-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; gap: 18px; }
+    .band-dot { width: 36px; height: 36px; background: var(--pp-black); border-radius: 50%; flex-shrink: 0; }
+    .band p { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; color: var(--pp-black); line-height: 1.3; }
+
+    .section { padding: 88px 48px; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--pp-blue); display: inline-block; border-bottom: 2px solid var(--pp-blue); padding-bottom: 3px; margin-bottom: 20px; }
+    .label.dark { color: var(--pp-black); border-color: var(--pp-black); }
+    .label.yellow { color: var(--pp-yellow); border-color: var(--pp-yellow); }
+    h2.section-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; text-transform: uppercase; line-height: 1.0; letter-spacing: -0.5px; margin-bottom: 16px; }
+    .section-lead { font-size: 1.05rem; color: #4B5563; max-width: 680px; line-height: 1.7; margin-bottom: 56px; }
+
+    .props { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; }
+    .prop { background: var(--pp-grey); padding: 36px 32px; transition: background 0.2s; }
+    .prop:hover { background: var(--pp-blue); }
+    .prop:hover .prop-num { color: rgba(0,0,0,0.2); }
+    .prop:hover h3 { color: var(--pp-black); }
+    .prop:hover p { color: rgba(0,0,0,0.7); }
+    .prop-num { font-family: 'Barlow Condensed', sans-serif; font-size: 3rem; font-weight: 800; color: #D1D5DB; line-height: 1; margin-bottom: 12px; transition: color 0.2s; }
+    .prop h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; color: var(--pp-black); margin-bottom: 10px; transition: color 0.2s; }
+    .prop p { font-size: 0.95rem; color: #4B5563; line-height: 1.6; transition: color 0.2s; }
+
+    .section-dark { background: var(--pp-black); }
+    .section-dark h2.section-title { color: var(--pp-white); }
+    .section-dark .section-lead { color: #9CA3AF; }
+    .quote-wrap { border-left: 4px solid var(--pp-blue); padding: 24px 0 24px 36px; margin: 56px 0 0; }
+    .quote-text { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 700; text-transform: uppercase; color: var(--pp-white); line-height: 1.2; margin-bottom: 12px; }
+    .quote-text strong { color: var(--pp-blue); }
+    .quote-author { font-size: 0.85rem; color: #6B7280; font-style: italic; }
+
+    .ph-generic { border: 2px dashed #D1D5DB; padding: 48px 40px; text-align: center; background: #FAFAFA; }
+    .ph-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #9CA3AF; margin-bottom: 12px; display: block; }
+    .ph-generic h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; color: #D1D5DB; margin-bottom: 8px; }
+    .ph-generic p { font-size: 0.9rem; color: #9CA3AF; line-height: 1.5; }
+
+    /* 3-col layout for security/work/vivre ensemble */
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 56px; }
+    @media (max-width: 900px) { .pillars { grid-template-columns: 1fr; } }
+    .pillar { background: var(--pp-black); padding: 40px 32px; }
+    .pillar-icon { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--pp-blue); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .pillar-icon::before { content: ''; width: 20px; height: 2px; background: var(--pp-blue); }
+    .pillar h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 800; text-transform: uppercase; color: var(--pp-white); margin-bottom: 14px; line-height: 1.1; }
+    .pillar p { font-size: 0.92rem; color: #9CA3AF; line-height: 1.65; }
+
+    .form-section { background: var(--pp-black); padding: 88px 48px; }
+    .form-inner { max-width: 640px; margin: 0 auto; }
+    .form-header { text-align: center; margin-bottom: 48px; }
+    .form-header h2 { color: var(--pp-white); margin-bottom: 14px; }
+    .form-header h2 span { color: var(--pp-yellow); }
+    .form-header p { color: #9CA3AF; font-size: 1rem; line-height: 1.6; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .fg { display: flex; flex-direction: column; gap: 6px; }
+    .fg.full { grid-column: 1/-1; }
+    label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #6B7280; }
+    input, select, textarea { padding: 13px 16px; border: 1.5px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); color: var(--pp-white); font-family: 'Barlow', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
+    input:focus, select:focus, textarea:focus { border-color: var(--pp-yellow); background: rgba(255,237,0,0.04); }
+    select option { background: #111; }
+    textarea { resize: vertical; min-height: 96px; }
+    .check-row { display: flex; align-items: flex-start; gap: 12px; margin: 18px 0; font-size: 0.87rem; color: #6B7280; line-height: 1.5; }
+    .check-row input[type="checkbox"] { width: 17px; height: 17px; margin-top: 2px; flex-shrink: 0; accent-color: var(--pp-yellow); }
+    .check-row label { font-size: 0.87rem; letter-spacing: 0; text-transform: none; color: #6B7280; }
+    .btn-submit { width: 100%; padding: 17px; background: var(--pp-yellow); color: var(--pp-black); font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; transition: opacity 0.2s, transform 0.15s; }
+    .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+    .form-note { text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.2); margin-top: 14px; }
+
+    footer { background: #050505; padding: 28px 48px; text-align: center; }
+    .footer-logo { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .footer-dot { width: 12px; height: 12px; background: var(--pp-yellow); border-radius: 50%; }
+    .footer-name { font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
+    footer p { font-size: 0.78rem; color: rgba(255,255,255,0.2); line-height: 1.6; }
+
+    .meeting-banner { background: var(--pp-yellow); padding: 14px 48px; display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .meeting-banner p { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--pp-black); }
+    .meeting-banner a { background: var(--pp-black); color: var(--pp-yellow); font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 18px; text-decoration: none; transition: opacity 0.2s; flex-shrink: 0; }
+    .meeting-banner a:hover { opacity: 0.8; }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; } .meeting-banner { padding: 14px 20px; } .hero { padding: 60px 20px; } .band { padding: 18px 20px; }
+      .section { padding: 60px 20px; } .form-section { padding: 60px 20px; }
+      .form-grid { grid-template-columns: 1fr; } footer { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo"><div class="logo-dot"></div><div class="logo-text">Place Publique</div></a>
+  <a href="#adhesion" class="nav-cta">Adhérer</a>
+</nav>
+
+<!-- MEETING BANNER -->
+<div class="meeting-banner">
+  <p>🟡 Venez échanger avec nous lors du grand meeting <strong>« [Nom du meeting] »</strong> — <strong>23 mai</strong></p>
+  <a href="#meeting">Je m'inscris</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Une France puissante</div>
+    <h1>Réformer.<br>Protéger.<br>Faire <span class="b">vivre</span><br>la <span class="y">République</span>.</h1>
+    <p class="hero-desc">
+      Le travail doit payer. La France doit peser en Europe. La sécurité doit être assurée partout.
+      Et la République doit tenir sa promesse à chaque citoyen, dans chaque territoire.
+    </p>
+    <div class="cta-row">
+      <a href="#adhesion" class="btn-primary">Rejoindre le mouvement</a>
+      <a href="#propositions" class="btn-ghost">Nos propositions</a>
+    </div>
+  </div>
+</section>
+
+<!-- BAND -->
+<div class="band">
+  <div class="band-inner">
+    <div class="band-dot"></div>
+    <p>Pas de réforme sans protection sociale. Pas de sécurité sans justice. Pas d'Europe sans souveraineté.</p>
+  </div>
+</div>
+
+<!-- PROPOSITIONS TRAVAIL -->
+<section class="section" id="propositions">
+  <div class="section-inner">
+    <span class="label dark">Travail & économie</span>
+    <h2 class="section-title">Le travail doit payer.<br>À sa juste valeur.</h2>
+    <p class="section-lead">
+      La promesse faite par nos démocraties — améliorer sa vie en travaillant — l'est plus tenue.
+      Place Publique veut la rétablir avec des mesures concrètes et un nouveau pacte fiscal.
+    </p>
+    <div class="props">
+      <div class="prop">
+        <div class="prop-num">01</div>
+        <h3>SMIC à 1 600€ nets</h3>
+        <p>Augmenter le SMIC à 1 600 euros nets dans les deux ans suivant notre accession au pouvoir. Organiser des conférences salariales dans tout le pays, visant d'abord les métiers essentiels marqués par la précarité et la pénibilité.</p>
+      </div>
+      <div class="prop">
+        <div class="prop-num">02</div>
+        <h3>Nouveau pacte fiscal</h3>
+        <p>Grand chantier fiscal pour rééquilibrer la taxation entre le travail, le capital, l'héritage et les retraites — sortir de cette injustice qui favorise les héritiers aux dépens des travailleurs. Ce qui se construit par le labeur doit valoir autant que ce qu'on hérite.</p>
+      </div>
+      <div class="prop">
+        <div class="prop-num">03</div>
+        <h3>Zéro mort au travail</h3>
+        <p>Adopter une grande stratégie "Zéro mort au travail" pour mettre fin à ce scandale : la France a le nombre de morts au travail le plus élevé d'Europe. Renforcer la représentation des salariés dans les conseils d'administration dès 100 salariés.</p>
+      </div>
+      <div class="prop">
+        <div class="prop-num">04</div>
+        <h3>Réindustrialisation souveraine</h3>
+        <p>Relocaliser la production dans les secteurs stratégiques, porter un "Buy European Act" dans les institutions européennes, financer l'innovation via la BPI et des fonds régionaux, soutenir la reprise d'entreprises par les salariés en coopératives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 PILIERS : EUROPE / SÉCURITÉ / VIVRE ENSEMBLE -->
+<section class="section section-dark">
+  <div class="section-inner">
+    <span class="label">Trois piliers</span>
+    <h2 class="section-title" style="color:white;">Europe. Sécurité.<br>Vivre ensemble.</h2>
+    <p class="section-lead">
+      Trois chantiers indissociables pour une France forte, apaisée, et capable d'agir dans le monde.
+    </p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon">Europe souveraine</div>
+        <h3>Construire la puissance européenne</h3>
+        <p>Fonds européen de défense de 500 milliards via emprunt commun. Traité de réunification européenne. Ressources propres pour l'Union. Étendre la dissuasion nucléaire française à nos partenaires européens. Sortir de l'impuissance normative pour une Europe qui agit.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">Sécurité républicaine</div>
+        <h3>Rétablir l'autorité sans démagogie</h3>
+        <p>La réponse durable se trouve dans le rétablissement méthodique de l'autorité républicaine. Muscler les moyens contre le narcotrafic, lancer un programme de prévention de la délinquance, améliorer les conditions des policiers, doubler les Maisons du droit et de la justice.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">Vivre ensemble</div>
+        <h3>La laïcité comme émancipation</h3>
+        <p>Défendre fermement la laïcité républicaine. Garantir la liberté de conscience. Renforcer la prévention des dérives communautaristes. Abolir progressivement les régimes dérogatoires à la loi de 1905. Faire vivre la promesse républicaine d'égalité réelle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLACEHOLDER PROPOSITIONS -->
+<div style="padding: 80px 48px; background:#F9FAFB;">
+  <div style="max-width:1080px; margin:0 auto;">
+    <span class="label dark">À compléter</span>
+    <h2 class="section-title" style="margin-bottom:24px;">Propositions supplémentaires</h2>
+    <div class="ph-generic">
+      <span class="ph-tag">Section à compléter</span>
+      <h3>Insérer 2–3 propositions complémentaires</h3>
+      <p>Logement, démocratie locale, réforme des institutions, Europe sociale… À sélectionner selon les priorités de communication.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FORMULAIRE -->
+<section class="form-section" id="adhesion">
+  <div class="form-inner">
+    <div class="form-header">
+      <span class="label yellow">Rejoindre Place Publique</span>
+      <h2 class="section-title" style="color:white;">Engagez-vous.<br><span>Adhérez.</span></h2>
+      <p>La France a besoin d'un projet sérieux, ambitieux, républicain. Rejoignez une force qui réforme sans casser et protège sans démagogie.</p>
+    </div>
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-grid">
+        <div class="fg"><label for="prenom">Prénom *</label><input type="text" id="prenom" placeholder="Thomas" required /></div>
+        <div class="fg"><label for="nom">Nom *</label><input type="text" id="nom" placeholder="Bernard" required /></div>
+        <div class="fg"><label for="email">Email *</label><input type="email" id="email" placeholder="thomas@exemple.fr" required /></div>
+        <div class="fg"><label for="tel">Téléphone</label><input type="tel" id="tel" placeholder="06 12 34 56 78" /></div>
+        <div class="fg"><label for="ville">Ville *</label><input type="text" id="ville" placeholder="Paris" required /></div>
+        <div class="fg"><label for="cp">Code postal *</label><input type="text" id="cp" placeholder="75011" required /></div>
+        <div class="fg full">
+          <label for="parcours">Parcours (optionnel)</label>
+          <select id="parcours">
+            <option value="">— Votre engagement précédent —</option>
+            <option>Renaissance / LREM</option>
+            <option>MoDem</option>
+            <option>Horizons</option>
+            <option>Autre mouvement centriste ou progressiste</option>
+            <option>Aucun parti précédent</option>
+          </select>
+        </div>
+        <div class="fg full">
+          <label for="message">Ce qui vous motive (optionnel)</label>
+          <textarea id="message" placeholder="Pourquoi rejoindre Place Publique…"></textarea>
+        </div>
+      </div>
+      <div class="check-row"><input type="checkbox" id="rgpd" required /><label for="rgpd">J'accepte que mes données soient utilisées par Place Publique pour me contacter dans le cadre de mon adhésion. Elles ne seront pas transmises à des tiers.</label></div>
+      <div class="check-row"><input type="checkbox" id="actu" /><label for="actu">Je souhaite recevoir les actualités de Place Publique.</label></div>
+      <button type="submit" class="btn-submit">Adhérer à Place Publique</button>
+      <p class="form-note">Adhésion libre · à partir de 5€/mois · Email de confirmation envoyé</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><div class="footer-dot"></div><span class="footer-name">Place Publique</span></div>
+  <p>Rassembler pour transformer la France — Réformer, protéger, faire vivre la République.</p>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-submit');
+  btn.textContent = '✓ Bienvenue dans Place Publique !';
+  btn.style.background = '#fff';
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>
